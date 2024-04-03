@@ -14,13 +14,15 @@ from ethon.telefunc import fast_upload
 from telethon.tl.types import DocumentAttributeVideo
 from telethon import events
 
+forward_channel = -1002079474930
+
 def thumbnail(sender):
     if os.path.exists(f'{sender}.jpg'):
         return f'{sender}.jpg'
     else:
          return None
       
-async def get_msg(userbot, client, bot, sender, edit_id, msg_link, i, -1002079474930):
+async def get_msg(userbot, client, bot, sender, edit_id, msg_link, i, forward_channel):
     
     """ userbot: PyrogramUserBot
     client: PyrogramBotClient
@@ -94,7 +96,7 @@ async def get_msg(userbot, client, bot, sender, edit_id, msg_link, i, -100207947
                 )
 
             try:
-                await client.forward_messages(chat_id=-1002079474930, from_chat_id=sender, message_ids=msg.message_id)
+                await client.forward_messages(chat_id=forward_channel, from_chat_id=sender, message_ids=msg.message_id)
             except Exception as e:
                 print(f"Failed to forward message: {str(e)}")
         # Handle any exceptions or errors here
