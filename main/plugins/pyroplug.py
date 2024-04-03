@@ -95,12 +95,7 @@ async def get_msg(userbot, client, bot, sender, edit_id, msg_link, i, forward_ch
                     )
                 )
 
-            try:
-                await client.forward_messages(chat_id=forward_channel, from_chat_id=sender, message_ids=msg.message_id)
-            except Exception as e:
-                print(f"Failed to forward message: {str(e)}")
-        # Handle any exceptions or errors here
-
+            
 
 
             elif msg.media==MessageMediaType.VIDEO and msg.video.mime_type in ["video/mp4", "video/x-matroska"]:
@@ -128,12 +123,7 @@ async def get_msg(userbot, client, bot, sender, edit_id, msg_link, i, forward_ch
                     )
                 )
 
-                try:
-                    await client.forward_messages(chat_id=forward_channel, from_chat_id=sender, message_ids=msg.message_id)
-                except Exception as e:
-                    print(f"Failed to forward message: {str(e)}")
-        # Handle any exceptions or errors here
-
+                
             
             elif msg.media==MessageMediaType.PHOTO:
                 await edit.edit("Uploading photo.")
@@ -155,12 +145,7 @@ async def get_msg(userbot, client, bot, sender, edit_id, msg_link, i, forward_ch
                 )
 
 
-            try:
-                await client.forward_messages(chat_id=forward_channel, from_chat_id=sender, message_ids=msg.message_id)
-            except Exception as e:
-                print(f"Failed to forward message: {str(e)}")
-        # Handle any exceptions or errors here
-
+            
 
             try:
                 os.remove(file)
